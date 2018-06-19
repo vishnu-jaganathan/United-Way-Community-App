@@ -1,10 +1,14 @@
 import React from 'react';
-import { Header, StyleSheet, Text, View, Image, Alert, Button, TouchableOpacity } from 'react-native';
+import { Header, StyleSheet, Text, View, Image, Alert, Button, TouchableOpacity, ImageBackground } from 'react-native';
 
 export default class App extends React.Component {
   _onPressButton() {Alert.alert('Recording...')}
   render() {
     return (
+
+    <ImageBackground
+    style= {styles.container}
+    source={require('./background.png')} >
       <View style={{justifyContent: 'space-between', height: 500}}>
 
       <View style={{justifyContent: 'flex-end', alignSelf: 'stretch', height: 50, backgroundColor: 'lightblue'}}>
@@ -70,6 +74,8 @@ export default class App extends React.Component {
       
 
       </View>
+
+      </ImageBackground>
     );
   }
 }
@@ -77,7 +83,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    width: '100%',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },
