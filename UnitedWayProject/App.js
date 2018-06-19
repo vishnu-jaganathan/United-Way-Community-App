@@ -7,11 +7,11 @@ export default class App extends React.Component {
     return (
       <View style={{justifyContent: 'space-between', height: 500}}>
 
-      <View style={{justifyContent: 'flex-end', width: 400, height: 50, backgroundColor: 'lightblue'}}>
+      <View style={{justifyContent: 'flex-end', alignSelf: 'stretch', height: 50, backgroundColor: 'lightblue'}}>
       <Text style={{fontWeight:'bold', fontSize: 25}}>Record Interview Questions</Text>
       </View>
 
-      <View style={{justifyContent: 'space-between', width: 360, height: 50, backgroundColor: 'orange', 
+      <View style={{justifyContent: 'space-between', alignSelf: 'stretch', height: 50, backgroundColor: 'orange', 
       flexDirection: 'row'}}>
       <Text style={{fontSize: 20}}>Question 1</Text>
       <TouchableOpacity style={{width: 50, height: 50}} onPress={this._onPressButton}>
@@ -19,7 +19,7 @@ export default class App extends React.Component {
       </TouchableOpacity>
       </View>
 
-      <View style={{justifyContent: 'space-between', width: 360, height: 50, backgroundColor: 'orange', 
+      <View style={{justifyContent: 'space-between', alignSelf: 'stretch', height: 50, backgroundColor: 'orange', 
       flexDirection: 'row'}}>
       <Text style={{fontSize: 20}}>Question 2</Text>
       <TouchableOpacity style={{width: 50, height: 50}} onPress={this._onPressButton}>
@@ -27,7 +27,7 @@ export default class App extends React.Component {
       </TouchableOpacity>
       </View>
 
-      <View style={{justifyContent: 'space-between', width: 360, height: 50, backgroundColor: 'orange', 
+      <View style={{justifyContent: 'space-between', alignSelf: 'stretch', height: 50, backgroundColor: 'orange', 
       flexDirection: 'row'}}>
       <Text style={{fontSize: 20}}>Question 3</Text>
       <TouchableOpacity style={{width: 50, height: 50}} onPress={this._onPressButton}>
@@ -35,7 +35,7 @@ export default class App extends React.Component {
       </TouchableOpacity>
       </View>
 
-      <View style={{justifyContent: 'space-between', width: 360, height: 50, backgroundColor: 'orange', 
+      <View style={{justifyContent: 'space-between', alignSelf: 'stretch', height: 50, backgroundColor: 'orange', 
       flexDirection: 'row'}}>
       <Text style={{fontSize: 20}}>Question 4</Text>
       <TouchableOpacity style={{width: 50, height: 50}} onPress={this._onPressButton}>
@@ -43,7 +43,7 @@ export default class App extends React.Component {
       </TouchableOpacity>
       </View>
 
-      <View style={{justifyContent: 'space-between', width: 360, height: 50, backgroundColor: 'orange', 
+      <View style={{justifyContent: 'space-between', alignSelf: 'stretch', height: 50, backgroundColor: 'orange', 
       flexDirection: 'row'}}>
       <Text style={{fontSize: 20}}>Question 5</Text>
       <TouchableOpacity style={{width: 50, height: 50}} onPress={this._onPressButton}>
@@ -51,7 +51,7 @@ export default class App extends React.Component {
       </TouchableOpacity>
       </View>
 
-      <View style={{justifyContent: 'space-between', width: 360, height: 50, backgroundColor: 'orange', 
+      <View style={{justifyContent: 'space-between', alignSelf: 'stretch', height: 50, backgroundColor: 'orange', 
       flexDirection: 'row'}}>
       <Text style={{fontSize: 20}}>Question 6</Text>
       <TouchableOpacity style={{width: 50, height: 50}} onPress={this._onPressButton}>
@@ -59,7 +59,7 @@ export default class App extends React.Component {
       </TouchableOpacity>
       </View>
 
-      <View style={{justifyContent: 'space-between', width: 360, height: 50, backgroundColor: 'orange', 
+      <View style={{justifyContent: 'space-between', alignSelf: 'stretch', height: 50, backgroundColor: 'orange', 
       flexDirection: 'row'}}>
       <Text style={{fontSize: 20}}>Question 7</Text>
       <TouchableOpacity style={{width: 50, height: 50}} onPress={this._onPressButton}>
