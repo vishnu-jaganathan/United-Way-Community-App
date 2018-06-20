@@ -11,7 +11,7 @@ export default class App extends React.Component {
     source={require('./background.png')} >
       <View style={{justifyContent: 'space-between', height: 500}}>
 
-      <View style={{justifyContent: 'flex-end', alignSelf: 'stretch', height: 50, backgroundColor: 'lightblue'}}>
+      <View style={{justifyContent: 'flex-end', alignSelf: 'stretch', height: 50}}>
       <Text style={{fontWeight:'bold', fontSize: 25}}>Record Interview Questions</Text>
       </View>
 
@@ -70,7 +70,12 @@ export default class App extends React.Component {
         <Image source={require('./mic_icon.png')} style={{width: 50, height: 50}}/>
       </TouchableOpacity>
       </View>
-
+      
+      <Button
+        onPress={this._onPressButton}
+        title="Submit"
+        color="#841584"
+      />
       
 
       </View>
