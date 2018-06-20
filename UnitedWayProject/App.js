@@ -4,7 +4,13 @@ import {AppRegistry, View, ImageBackground, StyleSheet, Text, Image, Button, Ima
 
 
 export default class DisplayAnImage extends Component {
-  _onPressButton() {Alert.alert('button works')}
+  _onPressPlay() {Alert.alert('play button')}
+  _onPressRecord() {Alert.alert('record button')}
+  _onPressStop () {Alert.alert('stop button')}
+
+
+
+
   render() {
     return (
       
@@ -19,19 +25,19 @@ export default class DisplayAnImage extends Component {
         
       
         <View style={{alignSelf: 'stretch', flexDirection:'row', justifyContent: 'space-between', flex:1}}>
-      <TouchableOpacity style={{width:80, height: 80 }} onPress={this._onPressButton}>
+      <TouchableOpacity style={{width:80, height: 80 }} onPress={this._onPressPlay}>
           <Image
          style= {styles.playButton}
          source={require('./play.png')} />
          </TouchableOpacity>
          
-         <TouchableOpacity style={{width:80, height: 80  }} onPress={this._onPressButton}>
+         <TouchableOpacity style={{width:80, height: 80  }} onPress={this._onPressRecord}>
          <Image
          style= {styles.recordButton}
          source={require('./record.png')} />
          </TouchableOpacity>
         
-          <TouchableOpacity style={{width:80, height: 80 }} onPress={this._onPressButton}>
+          <TouchableOpacity style={{width:80, height: 80 }} onPress={this._onPressStop}>
          <Image
          style= {styles.stopButton}
          source={require('./stop.png')} />
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
  
-    
+
    
 
   },
