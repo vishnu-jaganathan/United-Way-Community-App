@@ -1,9 +1,16 @@
 import React from 'react';
 import { Header, StyleSheet, Text, View, Image, Alert, Button, TouchableOpacity, ImageBackground } from 'react-native';
+import {StackNavigator, } from 'react-navigation';
 
-export default class App extends React.Component {
+class Recordings extends React.Component {
   _onPressButton() {Alert.alert('Recording...')}
+
+  static navigationOptions = {
+    title: 'Recordings',
+  };
+
   render() {
+    const { navigate } = this.props.navigation;
     return (
 
     <ImageBackground
@@ -85,12 +92,12 @@ export default class App extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const NavigationApp = StackNavigator({
+  Recordings: { screen: Recordings },
 });
+
+export default class App extends React.Component {
+  render() {
+    return <NavigationApp />;
+  }
+}
