@@ -15,9 +15,8 @@ class Recordings extends React.Component {
 
     <ImageBackground
     style= {styles.container}
-    source={require('./background.png')} >
+    source={require('./watermark.png')} >
       <View style={{justifyContent: 'space-between', height: 500}}>
-
       <View style={{justifyContent: 'flex-end', alignSelf: 'stretch', height: 50}}>
       <Text style={{fontWeight:'bold', fontSize: 25}}>Record Interview Questions</Text>
       </View>
@@ -90,7 +89,6 @@ class Recordings extends React.Component {
         title="Submit"
         color="#841584"
       />
-      
 
       </View>
 
@@ -108,7 +106,7 @@ class VoiceCapture extends React.Component {
        
        <ImageBackground
           style= {styles.container}
-          source={require('./background.png')} >
+          source={require('./watermark.png')} >
          <View style={{justifyContent:'center'}}>
     
         <Text style={styles.text}>{this.props.navigation.state.params.question}</Text>
