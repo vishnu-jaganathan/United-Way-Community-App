@@ -1,15 +1,27 @@
 {
-  "name": "main-project",
-  "version": "0.0.0",
-  "description": "Stitching together everyone's papers\n\n",
-  "author": null,
+  "name": "UnitedWayProject",
+  "version": "0.1.0",
   "private": true,
-  "main": "node_modules/expo/AppEntry.js",
+  "devDependencies": {
+    "react-native-scripts": "1.14.0",
+    "jest-expo": "~27.0.0",
+    "react-test-renderer": "16.3.1"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
   "dependencies": {
-    "expo": "^28.0.0",
+    "expo": "^27.0.1",
     "react": "16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz",
-    "react-native-elements": "0.18.5",
-    "react-navigation": "2.5.2"
+    "react-native": "~0.55.2",
+    "react-navigation": "^2.3.1"
   }
 }
