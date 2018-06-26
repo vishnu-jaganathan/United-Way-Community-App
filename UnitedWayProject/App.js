@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, Alert, Button, TouchableOpacity, ImageBackground,} from 'react-native';
-import {StackNavigator, } from 'react-navigation';
+import {createStackNavigator, } from 'react-navigation';
 
 class Recordings extends React.Component {
-  _onPressButton() {Alert.alert('Recording...')}
+  _onPressButton() {Alert.alert('Submitted- return to home page')}
 
   static navigationOptions = {
     title: 'Recordings',
@@ -142,7 +142,7 @@ class VoiceCapture extends React.Component {
 }
 
 
-const NavigationApp = StackNavigator({
+const NavigationApp = createStackNavigator({
   Recordings: { screen: Recordings },
   VoiceCapture: { screen: VoiceCapture },
 });
