@@ -1,17 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, Alert, Button, TouchableOpacity, ImageBackground,} from 'react-native';
 import {createStackNavigator, } from 'react-navigation';
+import SoundRecorder from 'react-native-sound-recorder';
 
 export default class VoiceCapture extends React.Component {
     _onPressButton() {Alert.alert('button works')}
     render() {
       return (
-        
-         
          
          <ImageBackground
             style= {styles.container}
-            source={require('./watermark.png')} >
+            source={require('./watermark2.png')} >
            <View style={{justifyContent:'center'}}>
       
           <Text style={styles.text}>{this.props.navigation.state.params.question}</Text>

@@ -15,7 +15,7 @@ export default class Recordings extends React.Component {
   
       <ImageBackground
       style= {styles.container}
-      source={require('./watermark.png')} >
+      source={require('./watermark2.png')} >
         <View style={{justifyContent: 'space-between', height: 500}}>
         <View style={{justifyContent: 'flex-end', alignSelf: 'stretch', height: 50}}>
         <Text style={{fontWeight:'bold', fontSize: 25}}>Record Interview Questions</Text>
@@ -26,6 +26,7 @@ export default class Recordings extends React.Component {
         <Text style={{fontSize: 20}}>Question 1</Text>
         <TouchableOpacity style={{width: 50, height: 50}} onPress={ ()=> navigate('VoiceCapture', 
         {question: 'Tell me a little about yourself. This can include information about your job, your hobbies, your family, or anything else you choose.'}) }>
+        // edit question above
           <Image source ={require('./mic_icon.png')} style={{width: 50, height: 50}}/>
         </TouchableOpacity>
         </View>
