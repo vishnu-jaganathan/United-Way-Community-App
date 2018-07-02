@@ -11,8 +11,8 @@ export default class VoiceCapture extends React.Component {
          
          <ImageBackground
             style= {styles.container}
-            source={require('./watermark.png')} >
-           <View style={{justifyContent:'center'}}>
+            source={require('./Images/watermark.png')} >
+           <View style={{justifyContent:'center', width:400, height: 300, backgroundColor: 'white', paddingTop:50}}>
       
           <Text style={styles.text}>{this.props.navigation.state.params.question}</Text>
           
@@ -21,19 +21,19 @@ export default class VoiceCapture extends React.Component {
         <TouchableOpacity style={{width:80, height: 80 }} onPress={this._onPressButton}>
             <Image
            style= {styles.playButton}
-           source={require('./play.png')} />
+           source={require('./Images/play.png')} />
            </TouchableOpacity>
            
            <TouchableOpacity style={{width:80, height: 80  }} onPress={this._onPressButton}>
            <Image
            style= {styles.recordButton}
-           source={require('./record.png')} />
+           source={require('./Images/record.png')} />
            </TouchableOpacity>
           
             <TouchableOpacity style={{width:80, height: 80 }} onPress={this._onPressButton}>
            <Image
            style= {styles.stopButton}
-           source={require('./stop.png')} />
+           source={require('./Images/stop.png')} />
            </TouchableOpacity>
            </View>
            </View>
@@ -47,16 +47,14 @@ export default class VoiceCapture extends React.Component {
   const styles = StyleSheet.create({
     container:{
       flex:1,
-      width: '100%',
-      height:'100%',
-      justifyContent: 'center',
   
     },
     text:{
       textAlign: 'center',
-      fontSize: 20,
+      fontSize: 22,
       color: 'black',
       fontFamily: 'Roboto',
+      paddingBottom: 23
       
     },
     playButton: {

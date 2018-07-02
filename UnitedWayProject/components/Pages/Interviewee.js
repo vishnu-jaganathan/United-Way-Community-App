@@ -11,8 +11,10 @@ import {
   Alert,
   Switch,
   Modal,
+  Image
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { Camera, Permissions } from 'expo';
 
 export default class Interviewee extends Component {
   constructor() {
@@ -65,7 +67,7 @@ export default class Interviewee extends Component {
     return (
       <ImageBackground
         style={styles.BackgroundContainer}
-        source={require('./watermark.png')}>
+        source={require('./Images/watermark.png')}>
         <KeyboardAvoidingView
           style={{ flex: 1 }}
           behavior={'padding'}
@@ -92,30 +94,32 @@ export default class Interviewee extends Component {
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
                   }}>
-                  <Text style={styles.submitButtonModal}>Hide Modal</Text>
+                  <Text style={styles.submitButtonModal}>BACK</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </Modal>
 
+          <View style={styles.whiteContainer}>
+
           <Text style={styles.title1}>Interviewee Information</Text>
           <TextInput
             style={styles.textInput2}
-            placeholder="Enter Your Name"
+            placeholder="<Name>"
             value={this.state.textName2}
             onChangeText={textName2 => this.setState({ textName2 })}
             onSubmitEditing={this.onSubmit}
           />
           <TextInput
             style={styles.textInput2}
-            placeholder="Enter Your Address"
+            placeholder="<Address>"
             value={this.state.textAddress}
             onChangeText={textAddress => this.setState({ textAddress })}
             onSubmitEditing={this.onSubmit}
           />
           <TextInput
             style={styles.textInput2}
-            placeholder="Enter Your Neighborhood Name"
+            placeholder="<Neighborhood Name>"
             value={this.state.textNeighborhood2}
             onChangeText={textNeighborhood2 =>
               this.setState({ textNeighborhood2 })
@@ -124,48 +128,47 @@ export default class Interviewee extends Component {
           />
           <TextInput
             style={styles.textInput2}
-            placeholder="Enter Your Email"
+            placeholder="<Email>"
             value={this.state.textEmail}
             onChangeText={textEmail => this.setState({ textEmail })}
             onSubmitEditing={this.onSubmit}
           />
           <TextInput
             style={styles.textInput2}
-            placeholder="Enter Your Phone"
+            placeholder="<Phone>"
             value={this.state.textPhone}
             onChangeText={textPhone => this.setState({ textPhone })}
             onSubmitEditing={this.onSubmit}
           />
+          
+          </View>
+
 
           <View style={styles.MainContainer}>
             <TouchableOpacity
               style={styles.ButtonStyle}
               activeOpacity={0.5}
-              onPress={this.SampleButtonFunction}>
-              <Text style={styles.submitButtonInterviewee}>
-                {' '}
-                {this.state.ButtonTitle}{' '}
-              </Text>
+              onPress={this.SampleButtonFunctionTwo}>
+            <Image source={require('./Images/mic_icon.png')} style={{width: 100, height: 100}}/>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.ButtonStyle}
               activeOpacity={0.5}
-              onPress={this.SampleButtonFunctionTwo}>
-              <Text style={styles.submitButtonTwo}> Introduction </Text>
+              //onPress={this.SampleButtonFunctionTwo}
+              onPress={() => navigate('CameraScreen')}>
+              <Image source={require('./Images/camera-icon.png')} style={{width: 100, height: 100}}/>
             </TouchableOpacity>
           </View>
           
-            <View style={styles.MainContainer}>
- 
+            <View style={styles.buttonContainer}>
+            <View style={styles.moveButton}>
             <TouchableOpacity
-              style={styles.ButtonStyle}
-              activeOpacity={0.5}
               onPress={() => navigate('Recordings')}>
-              <Text style={styles.submitButtonTwo}> Submit </Text>
+              <Text style={styles.submitButtonTwo}> SUBMIT </Text>
             </TouchableOpacity>
           </View>
-          
+          </View>
         </KeyboardAvoidingView>
       </ImageBackground>
     );
@@ -178,6 +181,7 @@ const styles = StyleSheet.create({
   },
   title1: {
     color: 'black',
+    fontFamily: 'Roboto',
     fontWeight: 'bold',
     fontSize: 35,
     paddingBottom: 10,
@@ -185,34 +189,31 @@ const styles = StyleSheet.create({
   },
   textInput2: {
     color: 'black',
+    fontFamily: 'Roboto',
     fontSize: 20,
     paddingBottom: 20,
   },
-  submitButtonInterviewee: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 34,
-    padding: 4,
-    backgroundColor: 'blue',
-  },
   submitButtonTwo: {
-    color: 'black',
+   color: 'white',
     fontWeight: 'bold',
-    fontSize: 34,
-    padding: 4,
-    backgroundColor: 'red',
+    fontFamily: 'Roboto',
+    fontSize: 38,
+    padding: 10,
   },
   ButtonStyle: {
-    borderRadius: 5,
-    padding: 10,
+    borderRadius: 20,
+    padding: 25,
+    justifyContent: 'center',
   },
   MainContainer: {
     flexDirection: 'row',
-    paddingTop: 50,
+    justifyContent: 'center',
+    paddingTop: 100
   },
   titleModal: {
     color: 'black',
     fontWeight: 'bold',
+    fontFamily: 'Roboto',
     fontSize: 28,
   },
   textModal: {
@@ -220,20 +221,39 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 22,
     paddingTop: 25,
+    fontFamily: 'Roboto',
     paddingBottom: 25,
   },
   backgroundModal: {
     flex: 1,
-    backgroundColor: '#FFB351',
+    backgroundColor: 'white',
   },
   submitButtonModal: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: 20,
-    backgroundColor: '#969696',
+    fontFamily: 'Roboto',
+    fontSize: 32,
+    padding: 10,
+    backgroundColor: '#F57814',
   },
   ButtonStyleModal: {
     borderRadius: 5,
     paddingTop: 10,
   },
+  whiteContainer:{
+  backgroundColor: 'white',
+},
+buttonContainer:{
+  paddingTop: 50,
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: -40,
+    left: 30,
+},
+moveButton:{
+  marginBottom: 100,
+    width: 350,
+    alignItems: 'center',
+    backgroundColor: '#F57814',
+},
 });

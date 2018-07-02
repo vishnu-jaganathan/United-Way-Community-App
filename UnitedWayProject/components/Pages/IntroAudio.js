@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {View, ImageBackground,StyleSheet, Text,TouchableOpacity} from 'react-native';
 import {StackNavigator} from 'react-navigation'
 
-export default class DisclaimerPage extends Component {
+export default class IntroAudio extends Component {
 
 render() {
     const { navigate } = this.props.navigation;
@@ -13,11 +13,12 @@ render() {
         style = {styles.container}>
           <View style={styles.disclaimerContainer}>
           <Text style={styles.titleText}>
-          Please read this statement out loud to the interviewee:
+          Please have interviewee record the following message:
           </Text>
           
           <Text style={styles.bodyText}>
-            "By consenting to this interview, I am agreeing to share my story and my picture with United Way of Metro Chicago, who may feature it on their website or in other marketing materials. I understand that my personal information will not be shared except to contact me with further questions."
+            "Hello my name is {this.state.textName2} and I live in the{' '}
+                {this.state.textNeighborhood2} neighborhood"
           </Text>
           </View>
 
@@ -29,20 +30,7 @@ render() {
             <TouchableOpacity onPress={() => navigate('Interviewee')}>
             {/*Creating the button styleSheet responsible for the agree button color and button text*/}
             <View style={styles.button}>
-            <Text style={styles.buttonText}>AGREE</Text>
-            </View>
-            </TouchableOpacity>
-            </View>
-
-
-            {/*Creation of the disagree Button */}
-            {/*Creating the button styleSheet required for the disagree button*/}
-            <View style={styles.disButtonContainer}>
-            {/*the users background will change to white when the disagree button is pressed by using the TouchableHighlight*/}
-            <TouchableOpacity onPress={() => navigate('HomeScreen')}>
-            {/*Creating the button styleSheet responsible for the disagree button color and button text*/}
-            <View style={styles.disButton}>
-            <Text style={styles.buttonText}>DISAGREE</Text>
+            <Text style={styles.buttonText}>SUBMIT</Text>
             </View>
             </TouchableOpacity>
             </View>

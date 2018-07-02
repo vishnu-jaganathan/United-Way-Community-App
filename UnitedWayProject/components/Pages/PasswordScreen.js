@@ -5,19 +5,15 @@ import {StackNavigator} from 'react-navigation'
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Password Screen~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 //creating the page PasswordScreen
 export default class PasswordScreen extends Component {
-  static navigationOptions ={
-    title: 'PasswordScreen',
-  };
 
-
-  //Ghost text that will appear on the screen
   //just backspace to type over it
-  constructor(props) {
-    super(props);
-    this.state = { text: 'Event Password' };
+   constructor() {
+    super();
+    this.state = {
+      textPassword: '',
+      ButtonStateHolder: true,};
   }
-
-
+  
   render() {
     //this tells the page to navigate to another page
     const {navigate} = this.props.navigation;
@@ -25,28 +21,45 @@ export default class PasswordScreen extends Component {
     return (
       <ImageBackground 
 
-        source = {require('./watermark.png')}
+        source = {require('./Images/watermark.png')}
         style = {styles.container}>
       <KeyboardAvoidingView style={{flex:1}} behavior={"height"} KeyboardVerticalOffset={0} enabled>
+      <View style={styles.whiteContainer}>
 
         {/*creating the text that instructs the user to type in the event password*/}
         <Text style = {styles.textScreen}>Enter Today's Event Code: </Text>
+
       {/*Creating the ghost text*/}
         <TextInput
-        style={styles.inputText}
-        onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
-      />
+            style={styles.inputText}
+            placeholder="<Password>"
+            value={this.state.textPassword}
+            onChangeText={textPassword => this.setState({ 
+              ButtonStateHolder: false,
+              textPassword})}
+            secureTextEntry={true}
+          />
+      
+        </View>
         {/*!!!!!NEED TO LINK THE SUBMIT BUTTON TO THE NEXT PAGE!!!!*/}
         {/*Creation of the Submit Button */}
         {/*Creating the button styleSheet required for the Submit button*/}
         <View style={styles.buttonContainer}>
         {/*allows the background to be seen through while the user is pressing down on the Submit button*/}
-        <TouchableOpacity onPress={() => navigate('Interviewer')}>
+        <TouchableOpacity 
+        style={[
+                styles.button,
+                {
+                  backgroundColor: this.state.ButtonStateHolder
+                    ? '#607D8B'
+                    : '#F57814',
+                },
+              ]}
+        disabled={this.state.ButtonStateHolder}
+        onPress={() => navigate('Interviewer')}
+        >
         {/*Creating the button styleSheet responsible for the Submit button color and button text*/}
-        <View style={styles.button}>
         <Text style={styles.buttonText}>SUBMIT</Text>
-        </View>  
         </TouchableOpacity>
         </View>
         </KeyboardAvoidingView>
@@ -61,16 +74,14 @@ const styles = StyleSheet.create({
   //ImageBackground
   container:{
     flex: 1,
-    width: '100%',
-    height: '100%',
   },
   //adding a mute gray overlay on the background image
 //TextInput
   inputText: {
     fontSize: 24,
     fontFamily: 'Roboto',
-    color: '#969696',
-    padding: 10,
+    color: 'black',
+    padding: 20
   },
 //Submit Button Position on the screen
   buttonContainer: {
@@ -82,7 +93,6 @@ const styles = StyleSheet.create({
     marginBottom: 100,
     width: 200,
     alignItems: 'center',
-    backgroundColor: '#F57814', 
   },
 //button text for the submit button
 buttonText: {
@@ -95,9 +105,13 @@ buttonText: {
 // formatting the text on the screen
 textScreen: {
   fontFamily: 'Roboto',
-  fontSize:28,
+  fontSize:32,
   color: 'black',
   fontWeight: 'bold',
-  padding: 30,
+  paddingBottom: 10
+},
+
+whiteContainer:{
+  backgroundColor: 'white',
 },
 });

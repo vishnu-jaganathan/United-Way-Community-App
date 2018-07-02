@@ -25,7 +25,6 @@ export default class Interviewer extends Component {
       switchValueOne: false,
       switchValueTwo: false,
       ButtonStateHolderInterviewer: true,
-      ButtonTitle: 'Submit',
     };
   }
 
@@ -51,41 +50,44 @@ export default class Interviewer extends Component {
     return (
       <ImageBackground
         style={styles.BackgroundContainer}
-        source={require('./watermark.png')}>
+        source={require('./Images/watermark.png')}>
         <KeyboardAvoidingView
           style={{ flex: 1 }}
           behavior={'padding'}
           KeyboardVerticalOffset={-5}
           enabled>
+          <View style={styles.whiteContainer}>
+
           <Text style={styles.title1}>Interviewer Information</Text>
           <TextInput
             style={styles.text2}
-            placeholder="Enter Your Name"
+            placeholder="<Name>"
             value={this.state.textName1}
             onChangeText={textName1 => this.setState({ textName1 })}
             onSubmitEditing={this.onSubmit}
           />
           <TextInput
             style={styles.text2}
-            placeholder="Enter Your Company"
+            placeholder="<Company Name>"
             value={this.state.textCompany1}
             onChangeText={textCompany1 => this.setState({ textCompany1 })}
             onSubmitEditing={this.onSubmit}
           />
           <TextInput
             style={styles.text2}
-            placeholder="Enter Your Email"
+            placeholder="<Email>"
             value={this.state.textEmail1}
             onChangeText={textEmail1 => this.setState({ textEmail1 })}
             onSubmitEditing={this.onSubmit}
           />
           <TextInput
             style={styles.text2}
-            placeholder="Enter Your Phone"
+            placeholder="<Phone>"
             value={this.state.textPhone1}
             onChangeText={textPhone1 => this.setState({ textPhone1 })}
             onSubmitEditing={this.onSubmit}
           />
+          </View>
 
           <View style={styles.container}>
             <Text style={styles.text1}>
@@ -123,8 +125,7 @@ export default class Interviewer extends Component {
               disabled={this.state.ButtonStateHolderInterviewer}
               onPress={() => navigate('DisclaimerPage')}>
               <Text style={styles.submitButton}>
-                {' '}
-                {this.state.ButtonTitle}{' '}
+                SUBMIT
               </Text>
             </TouchableOpacity>
           </View>
@@ -141,39 +142,48 @@ const styles = StyleSheet.create({
   title1: {
     color: 'black',
     fontWeight: 'bold',
+    fontFamily: 'Roboto',
     fontSize: 35,
     paddingBottom: 10,
     justifyContent: 'center',
   },
   submitButton: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: 38,
+    fontFamily: 'Roboto',
+    fontSize: 28,
     padding: 20,
   },
   text1: {
     flex: 5,
     color: 'black',
-    fontSize: 18,
+    fontFamily: 'Roboto',
+    fontSize: 15,
   },
   text2: {
     color: 'black',
     fontSize: 20,
+    fontFamily: 'Roboto',
     paddingBottom: 20,
   },
   container: {
     flexDirection: 'row',
     padding: 10,
+    backgroundColor: 'white'
   },
   v1: {
     flex: 1,
   },
   ButtonStyleInterviewer: {
-    borderRadius: 5,
+    padding: 5,
   },
   MainContainerInterviewer: {
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
+    paddingTop: 40
   },
+  whiteContainer:{
+  backgroundColor: 'white',
+},
 });
