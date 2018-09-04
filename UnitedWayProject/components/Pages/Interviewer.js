@@ -13,6 +13,21 @@ import {
   Modal,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
+import * as firebase from 'firebase';
+
+//Init Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCU1cix2Zi-4rCtx0_TYJOG-8DNJS1-_6U",
+  authDomain: "uwstory-ad41a.firebaseapp.com",
+  databaseURL: "https://uwstory-ad41a.firebaseio.com",
+  projectId: "uwstory-ad41a",
+  storageBucket: "uwstory-ad41a.appspot.com"
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default class Interviewer extends Component {
   constructor() {
@@ -25,7 +40,9 @@ export default class Interviewer extends Component {
       switchValueOne: false,
       switchValueTwo: false,
       ButtonStateHolderInterviewer: true,
+      ButtonStateHolderPublish: true,
     };
+    this.onSelect = this.onSelect.bind(this);
   }
 
   onSubmit() {
@@ -42,6 +59,14 @@ export default class Interviewer extends Component {
   onSwitchChangeTwo(value) {
     this.setState({
       switchValueTwo: value,
+      ButtonStateHolderPublish: !value,
+    });
+  }
+
+  onSelect(index, value) {
+    this.setState({
+      text: `Selected index: ${index} , value: ${value}`,
+      ButtonStateHolderInterviewer: false,
     });
   }
 
@@ -57,36 +82,35 @@ export default class Interviewer extends Component {
           KeyboardVerticalOffset={-5}
           enabled>
           <View style={styles.whiteContainer}>
-
-          <Text style={styles.title1}>Interviewer Information</Text>
-          <TextInput
-            style={styles.text2}
-            placeholder="<Name>"
-            value={this.state.textName1}
-            onChangeText={textName1 => this.setState({ textName1 })}
-            onSubmitEditing={this.onSubmit}
-          />
-          <TextInput
-            style={styles.text2}
-            placeholder="<Company Name>"
-            value={this.state.textCompany1}
-            onChangeText={textCompany1 => this.setState({ textCompany1 })}
-            onSubmitEditing={this.onSubmit}
-          />
-          <TextInput
-            style={styles.text2}
-            placeholder="<Email>"
-            value={this.state.textEmail1}
-            onChangeText={textEmail1 => this.setState({ textEmail1 })}
-            onSubmitEditing={this.onSubmit}
-          />
-          <TextInput
-            style={styles.text2}
-            placeholder="<Phone>"
-            value={this.state.textPhone1}
-            onChangeText={textPhone1 => this.setState({ textPhone1 })}
-            onSubmitEditing={this.onSubmit}
-          />
+            <Text style={styles.title1}>Interviewer Information</Text>
+            <TextInput
+              style={styles.text2}
+              placeholder="<Name>"
+              value={this.state.textName1}
+              onChangeText={textName1 => this.setState({ textName1 })}
+              onSubmitEditing={this.onSubmit}
+            />
+            <TextInput
+              style={styles.text2}
+              placeholder="<Company Name>"
+              value={this.state.textCompany1}
+              onChangeText={textCompany1 => this.setState({ textCompany1 })}
+              onSubmitEditing={this.onSubmit}
+            />
+            <TextInput
+              style={styles.text2}
+              placeholder="<Email>"
+              value={this.state.textEmail1}
+              onChangeText={textEmail1 => this.setState({ textEmail1 })}
+              onSubmitEditing={this.onSubmit}
+            />
+            <TextInput
+              style={styles.text2}
+              placeholder="<Phone>"
+              value={this.state.textPhone1}
+              onChangeText={textPhone1 => this.setState({ textPhone1 })}
+              onSubmitEditing={this.onSubmit}
+            />
           </View>
 
           <View style={styles.container}>
@@ -94,22 +118,29 @@ export default class Interviewer extends Component {
               Do you agree to keep confidential any name and personal
               information you may learn during this interview?
             </Text>
-            <Switch
-              style={styles.v1}
-              value={this.state.switchValueOne}
-              onValueChange={value => this.onSwitchChangeOne(value)}
-            />
+            <View>
+              <RadioGroup
+                onSelect={(index, value) => this.onSelect(index, value)}>
+                <RadioButton value={'item1'}>
+                  <Text>I agree</Text>
+                </RadioButton>
+
+              </RadioGroup>
+            </View>
           </View>
           <View style={styles.container}>
             <Text style={styles.text1}>
               Will you allow United Way to credit your name and company should
               we choose to publish informaiton regarding this interview?
             </Text>
-            <Switch
-              style={styles.v1}
-              value={this.state.switchValueTwo}
-              onValueChange={value => this.onSwitchChangeTwo(value)}
-            />
+            <View>
+              <RadioGroup
+                onSelect={(index, value) => this.onSelect(index, value)}>
+                <RadioButton value={'item2'}>
+                  <Text>I accept</Text>
+                </RadioButton>
+              </RadioGroup>
+            </View>
           </View>
           <View style={styles.MainContainerInterviewer}>
             <TouchableOpacity
@@ -123,10 +154,14 @@ export default class Interviewer extends Component {
               ]}
               activeOpacity={0.5}
               disabled={this.state.ButtonStateHolderInterviewer}
-              onPress={() => navigate('DisclaimerPage')}>
-              <Text style={styles.submitButton}>
-                SUBMIT
-              </Text>
+              onPress={() => navigate('DisclaimerPage', {
+                hostName: this.state.textName1,
+                hostCompany : this.state.textCompany1,
+                hostEmail: this.state.textEmail1,
+                hostPhone : this.state.textPhone1,
+                hostPublish : this.state.ButtonStateHolderPublish,
+              })}>
+              <Text style={styles.submitButton}>SUBMIT</Text>
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
@@ -141,9 +176,8 @@ const styles = StyleSheet.create({
   },
   title1: {
     color: 'black',
-    fontWeight: 'bold',
     fontFamily: 'Roboto',
-    fontSize: 35,
+    fontSize: 30,
     paddingBottom: 10,
     justifyContent: 'center',
   },
@@ -152,7 +186,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Roboto',
     fontSize: 28,
-    padding: 20,
+    padding: 10,
   },
   text1: {
     flex: 5,
@@ -169,10 +203,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     padding: 10,
-    backgroundColor: 'white'
-  },
-  v1: {
-    flex: 1,
+    backgroundColor: 'white',
   },
   ButtonStyleInterviewer: {
     padding: 5,
@@ -181,9 +212,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    paddingTop: 40
+    paddingTop: 20,
   },
-  whiteContainer:{
-  backgroundColor: 'white',
-},
+  whiteContainer: {
+    backgroundColor: 'white',
+  },
 });

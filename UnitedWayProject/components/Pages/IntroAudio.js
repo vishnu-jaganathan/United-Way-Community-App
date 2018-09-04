@@ -1,39 +1,43 @@
 import React, { Component } from 'react';
-import {View, ImageBackground,StyleSheet, Text,TouchableOpacity} from 'react-native';
-import {StackNavigator} from 'react-navigation'
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
 export default class IntroAudio extends Component {
-
-render() {
+  render() {
     const { navigate } = this.props.navigation;
     return (
       //uploading the watermark image and creating the styleSheet for it
-      <ImageBackground 
-        source = {require('./Images/watermark.png')}
-        style = {styles.container}>
-          <View style={styles.disclaimerContainer}>
+      <ImageBackground
+        source={require('./Images/watermark.png')}
+        style={styles.container}>
+        <View style={styles.disclaimerContainer}>
           <Text style={styles.titleText}>
-          Please have interviewee record the following message:
+            Please have interviewee record the following message:
           </Text>
-          
+
           <Text style={styles.bodyText}>
             "Hello my name is {this.state.textName2} and I live in the{' '}
-                {this.state.textNeighborhood2} neighborhood"
+            {this.state.textNeighborhood2} neighborhood"
           </Text>
-          </View>
+        </View>
 
-
-            {/*Creation of the Agree Button */}
-            {/*Creating the button styleSheet required for the Agree button*/}
-            <View style={styles.buttonContainer}>
-            {/*the users background will change to white when the agree button is pressed by using the TouchableHighlight*/}
-            <TouchableOpacity onPress={() => navigate('Interviewee')}>
+        {/*Creation of the Agree Button */}
+        {/*Creating the button styleSheet required for the Agree button*/}
+        <View style={styles.buttonContainer}>
+          {/*the users background will change to white when the agree button is pressed by using the TouchableHighlight*/}
+          <TouchableOpacity onPress={() => navigate('Interviewee')}>
             {/*Creating the button styleSheet responsible for the agree button color and button text*/}
             <View style={styles.button}>
-            <Text style={styles.buttonText}>SUBMIT</Text>
+              <Text style={styles.buttonText}>SUBMIT</Text>
             </View>
-            </TouchableOpacity>
-            </View>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     );
   }
@@ -42,7 +46,7 @@ render() {
 //responsible for the aesthetic of the app
 const styles = StyleSheet.create({
   //ImageBackground
-  container:{
+  container: {
     flex: 1,
     width: '100%',
     height: '100%',
@@ -52,7 +56,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     fontSize: 24,
     color: 'black',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
   },
   //Title Text
   titleText: {
@@ -83,7 +87,6 @@ const styles = StyleSheet.create({
     width: 200,
     alignItems: 'center',
     backgroundColor: '#F57814',
-    
   },
   //Disagree button color
   disButton: {
@@ -91,7 +94,6 @@ const styles = StyleSheet.create({
     width: 200,
     alignItems: 'center',
     backgroundColor: '#969696',
-    
   },
   //button text for both the agree and disagree button
   buttonText: {
@@ -99,9 +101,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Roboto',
     fontSize: 28,
-    fontWeight:'bold',
+    fontWeight: 'bold',
   },
   disclaimerContainer: {
-    backgroundColor: 'white'
-  }
+    backgroundColor: 'white',
+  },
 });
