@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'expo';
 import {
   AppRegistry,
   Text,
@@ -20,8 +21,9 @@ import HomeScreen from './components/Pages/HomeScreen';
 import DisclaimerPage from './components/Pages/DisclaimerPage';
 import Recordings from './components/Pages/Recordings';
 import VoiceCapture from './components/Pages/VoiceCapture';
-import IntroAudio from './components/Pages/IntroAudio';
 import CameraScreen from './components/Pages/CameraScreen';
+import CameraRules from './components/Pages/CameraRules';
+import * as firebase from 'firebase';
 
 export default class myapp extends Component {
   render() {
@@ -32,9 +34,7 @@ export default class myapp extends Component {
 <View>
   <HomeScreen />
   <PasswordScreen />
-</View>
-
-
+</View>;
 
 const NavigationApp = StackNavigator({
   HomeScreen: { screen: HomeScreen },
@@ -42,12 +42,10 @@ const NavigationApp = StackNavigator({
   Interviewer: { screen: Interviewer },
   DisclaimerPage: { screen: DisclaimerPage },
   Interviewee: { screen: Interviewee },
+  CameraRules: { screen: CameraRules },
   CameraScreen: { screen: CameraScreen },
   Recordings: { screen: Recordings },
   VoiceCapture: { screen: VoiceCapture },
-  
 });
-
-
 
 AppRegistry.registerComponent('myapp', () => myapp);
